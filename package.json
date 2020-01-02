@@ -3,6 +3,23 @@
   "version": "1.0.0",
   "description": "Server application written with nodejs, express, apollo, graphql",
   "main": "index.js",
+  "scripts": {
+    "start": "node build/index.js",
+    "start:dev": "NODE_ENV=development webpack",
+    "run:dev": "NODE_ENV=development nodemon build/index.js",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShevchenkoVV/ServerApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShevchenkoVV/ServerApp/issues"
+  },
+  "homepage": "https://github.com/ShevchenkoVV/ServerApp#readme",
   "dependencies": {
     "apollo-server-express": "^2.9.0",
     "axios": "^0.19.0",
@@ -20,22 +37,5 @@
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-node-externals": "^1.7.2"
-  },
-  "scripts": {
-    "start": "node build/index.js",
-    "start:dev": "NODE_ENV=development webpack",
-    "run:dev": "NODE_ENV=development nodemon build/index.js",
-    "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShevchenkoVV/ServerApp.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ShevchenkoVV/ServerApp/issues"
-  },
-  "homepage": "https://github.com/ShevchenkoVV/ServerApp#readme"
+  }
 }

@@ -9,6 +9,7 @@
 
 // Imports: Express
 import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import { Request, Response } from 'express';
 // Imports: GraphQL
 import SERVER from './graphql/schema';
@@ -22,6 +23,9 @@ SERVER.applyMiddleware({
 });
 // Express: Port
 const { PORT = 3000 } = process.env;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response) => {
     res.send({
