@@ -10,7 +10,10 @@
 // Imports: Express
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { Request, Response } from 'express';
+import * as cors from 'cors';
+import * as cookieParser from 'cookie-parser';
+import * as methodOverride from 'method-override';
+import { Request, Response, } from 'express';
 // Imports: GraphQL
 import SERVER from './graphql/schema';
 
@@ -26,6 +29,9 @@ const { PORT = 3000 } = process.env;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(methodOverride('_method'));
+app.use(cookieParser());
 
 app.get('/', (req: Request, res: Response) => {
     res.send({
