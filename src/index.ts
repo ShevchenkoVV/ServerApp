@@ -1,28 +1,26 @@
-// const express = require('express');
-// const bodyParser = require('body-parser');
-//
-// // The GraphQL endpoint
-// app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-//
-// // GraphiQL, a visual editor for queries
-// app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
-
 // Imports: Express
-import * as express from 'express';
+import express from 'express';
 import * as bodyParser from 'body-parser';
-import * as cors from 'cors';
-import * as cookieParser from 'cookie-parser';
-import * as methodOverride from 'method-override';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import methodOverride from 'method-override';
 import { Request, Response, } from 'express';
+
 // Imports: GraphQL
-import SERVER from './graphql/schema';
+import SERVER from './graphql/apolloServer';
+
+// DataBase Creation
+const MONGO_DB_URL = "mongodb://admin:pass@localhost:27017?authSource=admin";
+import { initDB } from './database/dbSetupScript';
+initDB(MONGO_DB_URL);
 
 // Initialize the app
 const app = express();
 
 // Middleware: GraphQL
 SERVER.applyMiddleware({
-    app: app
+    app: app,
+    path: '/graphql'
 });
 // Express: Port
 const { PORT = 3000 } = process.env;

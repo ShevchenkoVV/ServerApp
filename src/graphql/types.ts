@@ -3,12 +3,25 @@ import { gql } from 'apollo-server-express';
 // GraphQL: TypeDefs
 const TYPEDEFS = gql`
     type Query {
-        test_query: Test
+        person(_id: String): Person
+        persons: [Person]
     }
-    type Test {
-        test_field_1: String
-        test_field_2: Int
-        test_field_3: Boolean
+    
+    type Person {
+        _id: String
+        firstName: String
+        secondName: String
+        lastName: String
+        address: String
+    }
+
+    type Mutation {
+        createPerson(firstName: String, secondName: String, lastName: String, address: String): Person
+    }
+
+    schema {
+        query: Query
+        mutation: Mutation
     }
 `;
 // Exports
